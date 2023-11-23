@@ -28,7 +28,7 @@
             <TextField fx:id="user" layoutX="105.0" layoutY="148.0" promptText="Nutzername" />
             <PasswordField fx:id="masterpw" layoutX="105.0" layoutY="200.0" promptText="Masterpasswort" />
             <Button fx:id="logIn" layoutX="105.0" layoutY="268.0" mnemonicParsing="false" onAction="#logInOnAction" text="Log In" />
-            <Button fx:id="register" layoutX="178.0" layoutY="268.0" mnemonicParsing="false" text="Registrieren" />
+            <Button fx:id="register" layoutX="178.0" layoutY="268.0" mnemonicParsing="false" onAction="#RegisterPage" text="Registrieren" />
             <Label fx:id="logInText" alignment="CENTER" layoutX="-4.0" layoutY="34.0" prefHeight="50.0" prefWidth="381.0" text="Einloggen/Registrieren" textFill="WHITE">
                <font>
                   <Font name="Kidros Regular" size="30.0" />

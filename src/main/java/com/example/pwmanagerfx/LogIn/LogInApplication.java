@@ -16,20 +16,20 @@ public class LogInApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-try{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/pwmanagerfx/LogIn-view.fxml"));
-    Parent root = loader.load();
-    primaryStage.initStyle(StageStyle.UNDECORATED);
-    LogInController controller = loader.getController();
-    controller.setMain(this);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/pwmanagerfx/LogIn-view.fxml"));
+            Parent root = loader.load();
+            primaryStage.initStyle(StageStyle.UNDECORATED);
+            LogInController controller = loader.getController();
+            controller.setMain(this);
 
-    Scene scene = new Scene(root);
-    primaryStage.setScene(scene);
-    primaryStage.setTitle("Log In");
-    primaryStage.show();
-}catch (IOException e){
-    e.printStackTrace();
-}
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Log In");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }

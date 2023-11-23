@@ -34,11 +34,13 @@ public class LogInController {
     @FXML
     private Button close;
 
-public void closeAction(ActionEvent e){
-    Stage stage = (Stage) close.getScene().getWindow();
-    stage.close();
-}
+    public void closeAction(ActionEvent e) {
+        Stage stage = (Stage) close.getScene().getWindow();
+        stage.close();
+    }
+
     public LogInApplication main;
+
     public void logInOnAction(ActionEvent e) throws SQLException {
         if (!user.getText().isBlank() && !masterpw.getText().isBlank()) {
             //welcomeText.setText("Das ist nicht der Login den du suchst!");
@@ -51,11 +53,12 @@ public void closeAction(ActionEvent e){
     public void setMain(LogInApplication main) {
         this.main = main;
     }
+
     public void validateLogIn() throws SQLException {
         DatabaseConnection connectNow = new DatabaseConnection();
         try (Connection connectDB = connectNow.getConnection()) {
 
-            String verifyLogIn = "SELECT count(1) FROM UserAccounts WHERE Username = '" + user.getText() + "' AND Password = '" + masterpw.getText() + "';";
+            String verifyLogIn = "SELECT * FROM UserAccounts WHERE Username = '" + user.getText() + "' AND Password = '" + masterpw.getText() + "';";
 
             try {
                 Statement statement = connectDB.createStatement();
@@ -80,8 +83,15 @@ public void closeAction(ActionEvent e){
 
     }
 
-    public void RegisterPage(ActionEvent e){
-        Stage stage = (Stage) register.getScene().getWindow();
+    public void RegisterPage(ActionEvent e) {
+        try {
+        RegApplication regApp = new RegApplication();
+        regApp.start(new Stage());
 
+        Stage stage = (Stage) register.getScene().getWindow();
+        stage.close();
+        }catch(Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
