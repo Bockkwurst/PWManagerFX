@@ -1,5 +1,7 @@
-package com.example.pwmanagerfx;
+package com.example.pwmanagerfx.LogIn;
 
+import com.example.pwmanagerfx.Register.RegApplication;
+import com.example.pwmanagerfx.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -53,7 +55,7 @@ public void closeAction(ActionEvent e){
         DatabaseConnection connectNow = new DatabaseConnection();
         try (Connection connectDB = connectNow.getConnection()) {
 
-            String verifyLogIn = "SELECT count(1) FROM useraccounts WHERE Username = '" + user.getText() + "' AND Password = '" + masterpw.getText() + "'";
+            String verifyLogIn = "SELECT count(1) FROM UserAccounts WHERE Username = '" + user.getText() + "' AND Password = '" + masterpw.getText() + "';";
 
             try {
                 Statement statement = connectDB.createStatement();
@@ -75,6 +77,11 @@ public void closeAction(ActionEvent e){
             }
         }
 
+
+    }
+
+    public void RegisterPage(ActionEvent e){
+        Stage stage = (Stage) register.getScene().getWindow();
 
     }
 }

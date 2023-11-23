@@ -1,5 +1,6 @@
-package com.example.pwmanagerfx;
+package com.example.pwmanagerfx.LogIn;
 
+import com.example.pwmanagerfx.Register.RegApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,7 @@ public class LogInApplication extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
 try{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn-view.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/pwmanagerfx/LogIn-view.fxml"));
     Parent root = loader.load();
     primaryStage.initStyle(StageStyle.UNDECORATED);
     LogInController controller = loader.getController();

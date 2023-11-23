@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pwmanagerfx.Register.RegController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #34374a;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../dlf.pt-chains-png-4093535.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #5f6375;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="91.0" layoutY="27.0" text="Registriere deinen Account" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Kidros Regular" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="firstName" layoutX="115.0" layoutY="103.0" promptText="Vorname" />
+            <TextField fx:id="lastName" layoutX="115.0" layoutY="146.0" promptText="Nachname" />
+            <TextField fx:id="newUser" layoutX="115.0" layoutY="188.0" promptText="Username" />
+            <PasswordField fx:id="newPassword" layoutX="115.0" layoutY="230.0" promptText="Passwort" />
+            <PasswordField fx:id="newPWrepeat" layoutX="115.0" layoutY="270.0" promptText="Passwort wiederholen" />
+            <Button fx:id="regButton" layoutX="152.0" layoutY="304.0" mnemonicParsing="false" text="Registrieren" />
+            <Label fx:id="regText" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="58.0" prefHeight="26.0" prefWidth="402.0" textAlignment="CENTER" textFill="#19ff28">
+               <font>
+                  <Font name="Kidros Regular" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="regClose" layoutX="232.0" layoutY="342.0" mnemonicParsing="false" onAction="#regcloseAction" text="Close" />
+            <Button fx:id="returnButton" layoutX="115.0" layoutY="342.0" mnemonicParsing="false" text="Zurück" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
