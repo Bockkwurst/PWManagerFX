@@ -42,7 +42,7 @@
                </font>
             </Label>
             <Button fx:id="regClose" layoutX="232.0" layoutY="342.0" mnemonicParsing="false" onAction="#regcloseAction" text="Close" />
-            <Button fx:id="returnButton" layoutX="115.0" layoutY="342.0" mnemonicParsing="false" text="Zurück" />
+            <Button fx:id="returnButton" layoutX="115.0" layoutY="342.0" mnemonicParsing="false" onAction="#returnPage" text="Zurück" />
          </children>
       </AnchorPane>
    </right>

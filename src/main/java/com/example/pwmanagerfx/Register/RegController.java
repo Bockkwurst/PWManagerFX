@@ -14,6 +14,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+
+import org.mindrot.jbcrypt.BCrypt;
 public class RegController {
 
     @FXML
@@ -44,4 +46,18 @@ public RegApplication regMain;
     public void setMain(RegApplication registration) {
         this.regMain = registration;
     }
+
+    public void returnPage(ActionEvent e) {
+        try {
+            LogInApplication logInApp = new LogInApplication();
+            logInApp.start(new Stage());
+
+            Stage stage = (Stage) returnButton.getScene().getWindow();
+            stage.close();
+        }catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
 }

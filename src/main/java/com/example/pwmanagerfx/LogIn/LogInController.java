@@ -1,5 +1,6 @@
 package com.example.pwmanagerfx.LogIn;
 
+import com.example.pwmanagerfx.Homescreen.HomeApplication;
 import com.example.pwmanagerfx.Register.RegApplication;
 import com.example.pwmanagerfx.DatabaseConnection;
 import javafx.event.ActionEvent;
@@ -45,6 +46,8 @@ public class LogInController {
         if (!user.getText().isBlank() && !masterpw.getText().isBlank()) {
             //welcomeText.setText("Das ist nicht der Login den du suchst!");
             validateLogIn();
+
+
         } else {
             welcomeText.setText("Du musst etwas eingeben!");
         }
@@ -66,7 +69,16 @@ public class LogInController {
 
                 while (queryResult.next()) {
                     if (queryResult.getInt(1) == 1) {
-                        welcomeText.setText("Willkommen!");
+                        //welcomeText.setText("Willkommen!");
+                        try{
+                            HomeApplication homeApp = new HomeApplication();
+                            homeApp.start(new Stage());
+
+                            Stage stage = (Stage) logIn.getScene().getWindow();
+                            stage.close();
+                        }catch(Exception ex) {
+                            ex.printStackTrace();
+                        }
 
                     } else {
                         welcomeText.setText("Das ist nicht der Login den du suchst!");
