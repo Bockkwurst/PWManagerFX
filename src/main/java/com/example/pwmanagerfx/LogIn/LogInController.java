@@ -11,11 +11,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class LogInController {
     @FXML
@@ -57,43 +55,46 @@ public class LogInController {
         this.main = main;
     }
 
-    public void validateLogIn() throws SQLException {
+    public void validateLogIn() {
         DatabaseConnection connectNow = new DatabaseConnection();
         try (Connection connectDB = connectNow.getConnection()) {
 
-            String verifyLogIn = "SELECT * FROM UserAccounts WHERE Username = '" + user.getText() + "' AND Password = '" + masterpw.getText() + "';";
+            String verifyLogIn = "SELECT password FROM users WHERE username = ?";
 
-            try {
-                Statement statement = connectDB.createStatement();
-                ResultSet queryResult = statement.executeQuery(verifyLogIn);
+            try (PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogIn)) {
+                preparedStatement.setString(1, user.getText());
 
-                while (queryResult.next()) {
-                    if (queryResult.getInt(1) == 1) {
-                        //welcomeText.setText("Willkommen!");
-                        try{
-                            HomeApplication homeApp = new HomeApplication();
-                            homeApp.start(new Stage());
+                try (ResultSet queryResult = preparedStatement.executeQuery()) {
+                    if (queryResult.next()) {
+                        String hashedPasswordFromDB = queryResult.getString("password");
 
-                            Stage stage = (Stage) logIn.getScene().getWindow();
-                            stage.close();
-                        }catch(Exception ex) {
-                            ex.printStackTrace();
+                        if (BCrypt.checkpw(masterpw.getText(), hashedPasswordFromDB)) {
+                            // Benutzerdaten gefunden - erfolgreicher Login
+                            try {
+                                HomeApplication homeApp = new HomeApplication();
+                                homeApp.start(new Stage());
+
+                                Stage stage = (Stage) logIn.getScene().getWindow();
+                                stage.close();
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                        } else {
+                            welcomeText.setText("Falsches Passwort!");
                         }
-
                     } else {
-                        welcomeText.setText("Das ist nicht der Login den du suchst!");
-
+                        welcomeText.setText("Benutzer nicht gefunden");
                     }
                 }
-
-
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-
     }
+
 
     public void RegisterPage(ActionEvent e) {
         try {

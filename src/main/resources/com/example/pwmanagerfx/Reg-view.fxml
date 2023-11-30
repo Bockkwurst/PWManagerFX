@@ -35,7 +35,7 @@
             <TextField fx:id="newUser" layoutX="115.0" layoutY="188.0" promptText="Username" />
             <PasswordField fx:id="newPassword" layoutX="115.0" layoutY="230.0" promptText="Passwort" />
             <PasswordField fx:id="newPWrepeat" layoutX="115.0" layoutY="270.0" promptText="Passwort wiederholen" />
-            <Button fx:id="regButton" layoutX="152.0" layoutY="304.0" mnemonicParsing="false" text="Registrieren" />
+            <Button fx:id="regButton" layoutX="152.0" layoutY="304.0" mnemonicParsing="false" onAction="#registerUser" text="Registrieren" />
             <Label fx:id="regText" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="58.0" prefHeight="26.0" prefWidth="402.0" textAlignment="CENTER" textFill="#19ff28">
                <font>
                   <Font name="Kidros Regular" size="20.0" />
