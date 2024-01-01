@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.sql.*;
@@ -25,7 +27,7 @@ public class LogInController {
     @FXML
     private Button logIn;
     @FXML
-    private Button close;
+    private Button closeButton;
 
     private LogInAuthentication logInAuthentication;
     private LogInApplication logInApplication;
@@ -36,19 +38,19 @@ public class LogInController {
     }
 
 
-
     public void setLogInApplication(LogInApplication logInApplication) {
         this.logInApplication = logInApplication;
     }
 
     public void closeAction(ActionEvent e) {
-        Stage stage = (Stage) close.getScene().getWindow();
+        Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+        ;
     }
 
     public LogInApplication main;
 
-    public void handleLogInAction(ActionEvent e) throws SQLException {
+    public void handleLogInAction() throws SQLException {
         if (!user.getText().isBlank() && !masterpw.getText().isBlank()) {
             if (logInAuthentication.validateLogIn(user.getText(), masterpw.getText())) {
                 try {
@@ -81,6 +83,16 @@ public class LogInController {
             stage.close();
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public void handleEnterKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            try {
+                handleLogInAction();
+        }catch (SQLException e){
+               e.printStackTrace();
+            }
         }
     }
 }

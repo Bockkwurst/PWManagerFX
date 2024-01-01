@@ -25,8 +25,8 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #5f6375;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="user" layoutX="105.0" layoutY="148.0" promptText="Nutzername" />
-            <PasswordField fx:id="masterpw" layoutX="105.0" layoutY="200.0" promptText="Masterpasswort" />
+            <TextField fx:id="user" layoutX="105.0" layoutY="148.0" onKeyPressed="#handleEnterKeyPressed" promptText="Nutzername" />
+            <PasswordField fx:id="masterpw" layoutX="105.0" layoutY="200.0" onKeyPressed="#handleEnterKeyPressed" promptText="Masterpasswort" />
             <Button fx:id="logIn" layoutX="105.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleLogInAction" text="Log In" />
             <Button fx:id="register" layoutX="178.0" layoutY="268.0" mnemonicParsing="false" onAction="#RegisterPage" text="Registrieren" />
             <Label fx:id="logInText" alignment="CENTER" layoutX="-4.0" layoutY="34.0" prefHeight="50.0" prefWidth="381.0" text="Einloggen/Registrieren" textFill="WHITE">
@@ -39,7 +39,7 @@
                   <Font name="Kidros Regular" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="close" layoutX="102.0" layoutY="317.0" mnemonicParsing="false" onAction="#closeAction" prefHeight="24.0" prefWidth="177.0" text="Close" />
+            <Button fx:id="closeButton" layoutX="91.0" layoutY="317.0" mnemonicParsing="false" onAction="#closeAction" prefHeight="24.0" prefWidth="177.0" text="Beenden" />
          </children>
       </AnchorPane>
    </right>

@@ -20,10 +20,17 @@ import com.example.pwmanagerfx.LogIn.LogInApplication;
 
 public class HomeController {
 
+    @FXML
+    private Button closeButton;
+
     public HomeApplication homeMain;
     public void setMain(HomeApplication LogIn) {
         this.homeMain = LogIn;
     }
 
+    public void closeAction(ActionEvent e) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
 
 }

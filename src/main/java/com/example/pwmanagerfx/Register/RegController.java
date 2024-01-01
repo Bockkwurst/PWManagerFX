@@ -31,14 +31,14 @@ public class RegController {
     @FXML
     private Button regButton;
     @FXML
-    private Button regClose;
+    private Button closeButton;
     @FXML
     private Button returnButton;
 
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public void regCloseAction(ActionEvent e) {
-        Stage stage = (Stage) regClose.getScene().getWindow();
+        Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 

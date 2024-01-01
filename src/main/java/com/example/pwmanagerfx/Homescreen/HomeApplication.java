@@ -2,9 +2,11 @@ package com.example.pwmanagerfx.Homescreen;
 
 import com.example.pwmanagerfx.BaseApplication;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -23,4 +25,5 @@ public class HomeApplication extends BaseApplication {
     public void start(Stage homeStage) {
         initializeStage(homeStage, "/com/example/pwmanagerfx/Home-view.fxml");
     }
+
 }

@@ -41,7 +41,7 @@
                   <Font name="Kidros Regular" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="regClose" layoutX="232.0" layoutY="342.0" mnemonicParsing="false" onAction="#regCloseAction" text="Close" />
+            <Button fx:id="closeButton" layoutX="210.0" layoutY="342.0" mnemonicParsing="false" onAction="#regCloseAction" text="Beenden" />
             <Button fx:id="returnButton" layoutX="115.0" layoutY="342.0" mnemonicParsing="false" onAction="#returnPage" text="Zurück" />
          </children>
       </AnchorPane>

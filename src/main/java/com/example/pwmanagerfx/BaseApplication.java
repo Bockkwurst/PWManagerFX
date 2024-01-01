@@ -6,12 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 
 public abstract class BaseApplication extends Application {
 
-    protected void initializeStage(Stage stage, String fxmlPath){
+    protected void initializeStage(Stage stage, String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
@@ -21,9 +22,11 @@ public abstract class BaseApplication extends Application {
             stage.setScene(scene);
             stage.setTitle("PasswordManager Copyright: Wolfgang Kremer");
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     protected abstract void initializeController(FXMLLoader loader);
+
 }
