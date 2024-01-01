@@ -3,16 +3,13 @@ package com.example.pwmanagerfx.LogIn;
 import com.example.pwmanagerfx.Homescreen.HomeApplication;
 import com.example.pwmanagerfx.Register.RegApplication;
 import com.example.pwmanagerfx.DatabaseConnection;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 
@@ -51,7 +48,7 @@ public class LogInController {
 
     public LogInApplication main;
 
-    public void logInOnAction(ActionEvent e) throws SQLException {
+    public void handleLogInAction(ActionEvent e) throws SQLException {
         if (!user.getText().isBlank() && !masterpw.getText().isBlank()) {
             if (logInAuthentication.validateLogIn(user.getText(), masterpw.getText())) {
                 try {

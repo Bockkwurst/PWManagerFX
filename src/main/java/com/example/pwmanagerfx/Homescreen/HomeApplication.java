@@ -1,5 +1,6 @@
 package com.example.pwmanagerfx.Homescreen;
 
+import com.example.pwmanagerfx.BaseApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,25 +10,17 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class HomeApplication extends Application {
+public class HomeApplication extends BaseApplication {
     private Stage homeStage;
 
     @Override
-    public void start(Stage homeStage) {
-        this.homeStage = homeStage;
-        try {
-            FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/com/example/pwmanagerfx/Home-view.fxml"));
-            Parent homeRoot = homeLoader.load();
-            this.homeStage.initStyle(StageStyle.UNDECORATED);
-            HomeController homecontroller = homeLoader.getController();
-            homecontroller.setMain(this);
+    protected void initializeController(FXMLLoader loader){
+        HomeController homeController = loader.getController();
+        homeController.setMain(this);
+    }
 
-            Scene scene = new Scene(homeRoot);
-            homeStage.setScene(scene);
-            homeStage.setTitle("Log In");
-            homeStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void start(Stage homeStage) {
+        initializeStage(homeStage, "/com/example/pwmanagerfx/Home-view.fxml");
     }
 }
