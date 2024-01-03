@@ -21,7 +21,10 @@
                   <Font name="Kidros Regular" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="closeButton" layoutX="62.0" layoutY="328.0" mnemonicParsing="false" onAction="#closeAction" text="Beenden" />
+            <Button fx:id="closeButton" layoutX="101.0" layoutY="328.0" mnemonicParsing="false" onAction="#closeAction" text="Beenden" />
+            <Button fx:id="editButton" layoutX="96.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleEditAction" text="Bearbeiten" />
+            <Button fx:id="logOutButton" layoutX="28.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleLogOutAction" text="Log Out" />
+            <Button fx:id="entryButton" layoutX="38.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleEntryAction" text="Neu" />
          </children>
       </AnchorPane>
    </left>

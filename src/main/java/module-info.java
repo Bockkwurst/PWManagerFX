@@ -12,4 +12,8 @@ module com.example.pwmanagerfx {
     opens com.example.pwmanagerfx.Register to javafx.fxml;
     exports com.example.pwmanagerfx.Homescreen;
     opens com.example.pwmanagerfx.Homescreen to javafx.fxml;
+    exports com.example.pwmanagerfx.Entry;
+    opens com.example.pwmanagerfx.Entry to javafx.fxml;
+    exports com.example.pwmanagerfx.Edit;
+    opens com.example.pwmanagerfx.Edit to javafx.fxml;
 }
