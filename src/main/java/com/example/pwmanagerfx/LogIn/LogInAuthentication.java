@@ -1,5 +1,7 @@
 package com.example.pwmanagerfx.LogIn;
 
+import com.example.pwmanagerfx.Entry.EntryController;
+import com.example.pwmanagerfx.Homescreen.HomeController;
 import org.mindrot.jbcrypt.BCrypt;
 import com.example.pwmanagerfx.DatabaseConnection;
 
@@ -10,6 +12,7 @@ import java.sql.SQLException;
 
 public class LogInAuthentication {
     private final DatabaseConnection databaseConnection;
+    public static boolean isValidLogin = false;
 
     public LogInAuthentication(DatabaseConnection databaseConnection) {
         this.databaseConnection = databaseConnection;
@@ -17,12 +20,19 @@ public class LogInAuthentication {
 
     public boolean validateLogIn(String username, String password) {
         try (Connection connectDB = DatabaseConnection.getConnection()) {
-            String verifyLogIn = "SELECT password FROM users WHERE username = ?";
+            String verifyLogIn = "SELECT masterpassword FROM users WHERE username = ?";
             try(PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogIn)){
                 preparedStatement.setString(1, username);
                 try(ResultSet queryResult = preparedStatement.executeQuery()){
                     if(queryResult.next()){
-                        String hashedPasswordFromDB = queryResult.getString("password");
+                        String hashedPasswordFromDB = queryResult.getString("masterpassword");
+                        isValidLogin = BCrypt.checkpw(password, hashedPasswordFromDB);
+
+                        if(isValidLogin){
+                            EntryController.loggedInUsername = username;
+                            HomeController.loggedInUsername = username;
+                        }
+
                         return BCrypt.checkpw(password, hashedPasswordFromDB);
                     }
                 }

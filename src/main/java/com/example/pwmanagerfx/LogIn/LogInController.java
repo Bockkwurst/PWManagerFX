@@ -1,5 +1,6 @@
 package com.example.pwmanagerfx.LogIn;
 
+import com.example.pwmanagerfx.Entry.EntryController;
 import com.example.pwmanagerfx.Homescreen.HomeApplication;
 import com.example.pwmanagerfx.Register.RegApplication;
 import com.example.pwmanagerfx.DatabaseConnection;
@@ -54,13 +55,15 @@ public class LogInController {
         if (!user.getText().isBlank() && !masterpw.getText().isBlank()) {
             if (logInAuthentication.validateLogIn(user.getText(), masterpw.getText())) {
                 try {
+                    EntryController.loggedInUsername = user.getText();
+
                     HomeApplication homeApp = new HomeApplication();
                     homeApp.start(new Stage());
 
                     Stage stage = (Stage) logIn.getScene().getWindow();
                     stage.close();
                 } catch (Exception ex) {
-
+                    ex.printStackTrace();
                 }
             } else {
                 welcomeText.setText("Das ist nicht der Login, den du suchst!");
@@ -90,8 +93,8 @@ public class LogInController {
         if (event.getCode() == KeyCode.ENTER) {
             try {
                 handleLogInAction();
-        }catch (SQLException e){
-               e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }

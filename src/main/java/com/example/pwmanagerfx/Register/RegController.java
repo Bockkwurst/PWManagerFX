@@ -2,6 +2,7 @@ package com.example.pwmanagerfx.Register;
 
 import com.example.pwmanagerfx.DatabaseConnection;
 import com.example.pwmanagerfx.LogIn.LogInApplication;
+import com.example.pwmanagerfx.Randomizer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,6 +35,10 @@ public class RegController {
     private Button closeButton;
     @FXML
     private Button returnButton;
+    @FXML
+    private Label yourPWLabel;
+    @FXML
+    private Label randomPassword;
 
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
@@ -70,7 +75,7 @@ public class RegController {
         if (newPasswordValue.equals(newPasswordRepeatValue)) {
             String hashedPassword = BCrypt.hashpw(newPasswordValue, BCrypt.gensalt());
             try (Connection connection = databaseConnection.getConnection()) {
-                String sql = "INSERT INTO users (firstName, lastName, username, password) VALUES (?,?,?,?)";
+                String sql = "INSERT INTO users (firstname, lastname, username, masterpassword) VALUES (?,?,?,?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, firstNameValue);
                     preparedStatement.setString(2, lastNameValue);
@@ -86,5 +91,12 @@ public class RegController {
         } else {
             regText.setText("Die Passwörter stimmen nicht überein.");
         }
+    }
+    public void handleGenerateAction(ActionEvent e) {
+        String generatedPassword = Randomizer.generatePassword();
+
+        newPassword.setText(generatedPassword);
+        yourPWLabel.setText("Dein Passwort");
+        randomPassword.setText(generatedPassword);
     }
 }

@@ -19,6 +19,16 @@
                   <Image url="@../../../dlf.pt-chains-png-4093535.png" />
                </image>
             </ImageView>
+            <Label fx:id="randomPassword" alignment="CENTER" layoutX="47.0" layoutY="325.0" onDragDetected="#handleGenerateAction" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="yourPWLabel" alignment="CENTER" layoutX="45.0" layoutY="288.0" onDragDetected="#handleGenerateAction" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </left>
@@ -35,7 +45,7 @@
             <TextField fx:id="newUser" layoutX="115.0" layoutY="188.0" promptText="Username" />
             <PasswordField fx:id="newPassword" layoutX="115.0" layoutY="230.0" promptText="Passwort" />
             <PasswordField fx:id="newPWrepeat" layoutX="115.0" layoutY="270.0" promptText="Passwort wiederholen" />
-            <Button fx:id="regButton" layoutX="152.0" layoutY="304.0" mnemonicParsing="false" onAction="#registerUser" text="Registrieren" />
+            <Button fx:id="regButton" layoutX="88.0" layoutY="304.0" mnemonicParsing="false" onAction="#registerUser" text="Registrieren" />
             <Label fx:id="regText" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="58.0" prefHeight="26.0" prefWidth="402.0" textAlignment="CENTER" textFill="#19ff28">
                <font>
                   <Font name="Kidros Regular" size="20.0" />
@@ -43,6 +53,7 @@
             </Label>
             <Button fx:id="closeButton" layoutX="210.0" layoutY="342.0" mnemonicParsing="false" onAction="#regCloseAction" text="Beenden" />
             <Button fx:id="returnButton" layoutX="115.0" layoutY="342.0" mnemonicParsing="false" onAction="#returnPage" text="Zurück" />
+            <Button fx:id="generateButton" layoutX="210.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleGenerateAction" text="Passwort generieren" />
          </children>
       </AnchorPane>
    </right>
